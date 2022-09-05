@@ -1,6 +1,7 @@
 /** @format */
 
-import React from "react";
+import { useState } from "react";
+import axios from "axios";
 import Brand from "../Assets/Brand.svg";
 import Home from "../Assets/Home.svg";
 import Members from "../Assets/Members.svg";
@@ -13,13 +14,15 @@ import { userContext } from "../utils/userContext";
 
 const Header = () => {
   const { user, setUser } = useContext(userContext);
+
   function handleDelete() {
     localStorage.removeItem("token");
     setUser(false);
   }
+
   return (
-    <div className=" bg-primary">
-      <div className="Cont p-4 text-gray-300 w-11/12 flex justify-between m-auto items-center">
+    <div className=" bg-primary ">
+      <div className="Cont p-4  text-gray-300 w-11/12 flex justify-between m-auto items-center">
         <div className="Brand scale-75 ">
           <Link to={"/"}>
             <img src={Brand} alt="" />
@@ -38,7 +41,9 @@ const Header = () => {
                     height={16}
                     alt=""
                   />
-                  <li>Home</li>
+                  <Link to={"/account/home"}>
+                    <li className="cursor-pointer">Home</li>
+                  </Link>
                 </div>
 
                 <div className=" flex  gap-2 items-center">
@@ -49,7 +54,9 @@ const Header = () => {
                     width={12}
                     height={12}
                   />
-                  <li>Members</li>
+                  <Link to={"account/member"}>
+                    <li>Members</li>
+                  </Link>
                 </div>
 
                 <div className=" flex  gap-2 items-center">
@@ -82,7 +89,11 @@ const Header = () => {
             </div>
 
             <div>
-              <img src={Profile} className="scale-75" alt="" />
+              {/* <img
+                src={`http://localhost:8000/${login.image}`}
+                className="h-[36px] w-[36px] rounded-lg"
+                alt=""
+              /> */}
             </div>
           </div>
         ) : (
@@ -104,9 +115,6 @@ const Header = () => {
             </div>
           </div>
         )}
-        {/* */}
-
-        {/*  */}
       </div>
     </div>
   );

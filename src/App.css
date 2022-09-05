@@ -5,3 +5,12 @@
 .btn-skill {
   @apply w-auto h-12 px-5 rounded-md bg-[#091423] text-white font-bold text-xl truncate shadow-md;
 }
+
+@layer components {
+  .btn-primary {
+    @apply m-1.5 bg-Tertairy border-[1px] rounded-md border-Tertairy py-1 px-1.5;
+  }
+  .list-style {
+    @apply border-[1px]  border-[#2D2747] rounded-sm inline-block mr-1.5 mb-1.5 p-1.5;
+  }
+}

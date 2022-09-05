@@ -6,26 +6,39 @@ import Comment from "../Components/Comment";
 import Trends from "../Components/Trends";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Home from "./Home";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const Main = () => {
-  const [userData, setUserData] = useState([]);
-
+  const [userData, setUserData] = useState({});
+  let [color, setColor] = useState("#15c5a4");
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const res = axios.get("http://localhost:8000/user/getUser").then((res) => {
-      setUserData(res.data.data);
-      console.log("", res.data.data);
-    });
+    axios
+      .get("http://localhost:8000/user/getUser", {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then((res) => {
+        setUserData(res.data.data);
+        // console.log(res.data);
+      });
   }, []);
-  return (
-    <div className="  w-full h-screen p-5 bg-Secondary text-slate-500 ">
-      <div className="  mt-5 gap-6  flex justify-between  m-auto">
-        {userData.map((user) => (
-          <Card user={user} />
-        ))}
+  if (Object.keys(userData).length == 0) {
+    return (
+      <div className="flex items-center justify-center -mt-10 bg-Secondary h-screen">
+        <ScaleLoader color={color} size={200} />
+      </div>
+    );
+  }
 
-        {/* <Comment />
-        <Trends /> */}
+  return (
+    <div className=" scrollbar-thin w-full h-screen p-3 bg-Secondary text-slate-500 ">
+      <div className="mt-5 gap-6 w-11/12 flex justify-between  m-auto ">
+        <Card user={userData} />
+        <Home user={userData} />
+        <Trends />
       </div>
     </div>
   );

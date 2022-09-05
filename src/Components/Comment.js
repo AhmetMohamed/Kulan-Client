@@ -1,94 +1,68 @@
-import React from "react";
+/** @format */
 
-const Comment = () => {
+import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import ListPost from "./ListPost";
+import Home from "../Pages/Home";
+
+const Comment = ({ user }) => {
+  // console.log(user.image);
+  const [post, setPost] = useState({});
+  async function handleOnSubmit() {
+    try {
+      const token = localStorage.getItem("token");
+      console.log(token);
+      const res = await axios.post(
+        "http://localhost:8000/post/createPost",
+        post,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      console.log(res.data);
+      toast.success(res.data.message);
+    } catch (e) {
+      console.log(e);
+      toast.error(e.response.data.message);
+    }
+  }
+
   return (
     <div>
-      <div className=" rounded-xl bg-primary p-1 mt-3 ">
-        <div className="rounded-xl h-fit bg-Secondary flex-1 m-4">
-          <div className="Post h-fit flex p-5 space-x-6">
-            <div className="bg-primary w-11 h-11 rounded-lg"></div>
-            <input
-              className="bg-Tertairy outline-none text-body flex-1 rounded-lg w-10 p-2 text-xs font-poppins font-medium"
-              placeholder="What is the code problem today?"
-            />
-          </div>
-
-          <div className="h-fit flex justify-center pt-1 pb-6 text-body px-7 gap-4 text-xs font-poppins font-medium text-Green">
-            <p>Ask Question</p>
-          </div>
+      <div className="Post h-fit flex p-5 gap-4">
+        <div className="bg-primary w-11 h-11 rounded-lg">
+          <img
+            src={`http://localhost:8000/${user.image}`}
+            alt=""
+            className="w-11 h-11 rounded-lg"
+          />
         </div>
+        <input
+          Title
+          className="bg-Tertairy outline-none text-body flex-1 rounded-lg w-10 p-2 text-xs font-poppins font-medium"
+          placeholder="What is the code problem today?"
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
+        />
+      </div>
+      <div className="px-8 mb-5 ml-12">
+        <textarea
+          body
+          className="bg-Tertairy outline-none text-body rounded-lg w-full overflow-y-auto h-32 overscroll-none p-3 mx-auto text-xs font-poppins font-medium"
+          placeholder="Write all the information someone would need to answer your question?"
+          onChange={(e) => setPost({ ...post, question: e.target.value })}
+        />
+      </div>
 
-        <div className="rounded-xl h-fit bg-Secondary flex-1 mx-4 mt-4 flex-col p-5 gap-4 items-center">
-          <div className="flex gap-3 items-center">
-            <div className="bg-primary w-11 h-11 rounded-lg"></div>
-
-            <div className="Pro  ">
-              <p className="font-poppins text-xs font-medium text-white">
-                Mohamed Ali
-              </p>
-              <p className="font-poppins text-xs font-medium text-body">
-                @malidev
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 text-xs text-body font-poppins font-medium leading-6">
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but majority have to suffered alteration in some form, by injected
-              humour, or randomised words which don't look even slightly
-              believable.
-            </p>
-          </div>
-
-          <div className="flex justify-content justify-between items-center mt-3 pb-3">
-            <div className="flex mt-4 relative">
-              <div className="bg-primary w-8 h-8 rounded-lg"></div>
-              <div className="bg-primary absolute left-5 border-2 border-secondary w-8 h-8 rounded-lg"></div>
-              <div className="bg-primary absolute left-15 border-2 border-secondary w-8 h-8 rounded-lg"></div>
-            </div>
-
-            <div className="flex gap-48 mt-4 justify-between font-poppins font-medium text-xs text-white pr-8">
-              <p>Like</p>
-              <p>Reply</p>
-              <p>Saved</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-xl h-fit bg-Secondary flex-1 mx-4 mt-4 flex-col p-5 gap-4 items-center">
-          <div className="flex gap-3 items-center">
-            <div className="bg-primary w-11 h-11 rounded-lg"></div>
-
-            <div className="Pro  ">
-              <p className="font-poppins text-xs font-medium text-white">
-                Mohamed Ali
-              </p>
-              <p className="font-poppins text-xs font-medium text-body">
-                @malidev
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 text-xs text-body font-poppins font-medium leading-6">
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but majority have to suffered alteration in some form, by injected
-              humour, or randomised words which don't look even slightly
-              believable.
-            </p>
-          </div>
-
-          <div className=" flex-1 justify-content justify-between items-center mt-8 pb-3">
-            <div className="Post h-fit flex  gap-4">
-              <div className="bg-primary w-11 h-11 rounded-lg"></div>
-              <input
-                className="bg-Tertairy outline-none text-body flex-1 rounded-lg w-10 p-2 text-xs font-poppins font-medium"
-                placeholder="What is the code problem today?"
-              />
-            </div>
-          </div>
-        </div>
+      <div className="h-fit flex pt-1 pb-6 text-body px-7 gap-4 text-xs font-poppins font-medium justify-between">
+        <p
+          className="mx-auto cursor-pointer hover:text-Green"
+          onClick={handleOnSubmit}
+        >
+          Ask Question
+        </p>
       </div>
     </div>
   );

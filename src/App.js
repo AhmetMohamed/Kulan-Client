@@ -13,7 +13,8 @@ import Landing from "./Pages/Landing";
 import { userContext } from "./utils/userContext";
 import { useState, useEffect } from "react";
 import Main from "./Pages/Main";
-import axios from "axios";
+import Members from "./Pages/Members";
+import jwt from "jwt-decode";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -23,6 +24,7 @@ function App() {
     if (token) {
       setUser(true);
     }
+
     setLoading(false);
   }, []);
   if (loading) return <h1>Loading...</h1>;
@@ -36,6 +38,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/account" element={<Protect />}>
             <Route path="home" element={<Main />} />
+            <Route path="member" element={<Members />} />
+            {/* <Route path="list" element={<Home />} /> */}
           </Route>
 
           <Route path="*" element={<NotFound />} />
