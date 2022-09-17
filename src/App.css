@@ -14,3 +14,8 @@
     @apply border-[1px]  border-[#2D2747] rounded-sm inline-block mr-1.5 mb-1.5 p-1.5;
   }
 }
+
+[data-color-mode*="dark"],
+[data-color-mode*="dark"] body {
+  --color-canvas-subtle: #3b5b86;
+}

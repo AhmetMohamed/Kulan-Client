@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Image from "../Assets/LandingImage.png";
+import Login from "./Login";
 
 const Landing = () => {
   return (
     <div className="w-full h-screen p-3 bg-primary text-slate-500 ">
       <div>
+        {/* <Login /> */}
         <div className="mt-11">
           <h3 className="mt-5 text-4xl uppercase text-white font-poppins space-y-5 font-bold text-center">
             Join the <span className="text-Green">biggest</span> <br />

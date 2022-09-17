@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiSend } from "react-icons/bi";
 import jwt from "jwt-decode";
 import axios from "axios";
@@ -10,12 +10,29 @@ const ListPost = ({ item }) => {
   const [comment, setComment] = useState(false);
   const [input, setInput] = useState({});
   const [listComment, setlistComment] = useState([]);
+  const [userData, setUserData] = useState({});
   let [color, setColor] = useState("#15c5a4");
 
   console.log(listComment);
   const user = localStorage.getItem("token");
   const decoded = jwt(user);
   const login = decoded.data;
+
+  console.log(login);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("http://localhost:8000/user/getUser", {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then((res) => {
+        setUserData(res.data.data);
+        // console.log(res.data);
+      });
+  }, []);
 
   // Post Comment
   async function handlePopComment(id) {
@@ -55,7 +72,7 @@ const ListPost = ({ item }) => {
 
   return (
     <div>
-      <div className="rounded-xl h-fit bg-Secondary flex-1 mx-4 mt-4 flex-col p-5 gap-4 mb-5 items-center">
+      <div className="rounded-xl h-fit bg-Secondary px-8 flex-1 mx-4 mt-4 flex-col p-5 gap-4 mb-5 items-center">
         <div className="flex gap-3 items-center">
           <div className="bg-primary w-11 h-11 rounded-lg">
             <img
@@ -66,7 +83,7 @@ const ListPost = ({ item }) => {
           </div>
 
           <div className="Pro  ">
-            <p className="font-poppins text-xs font-medium text-white">
+            <p className="font-poppins text-sm font-medium text-white">
               {item.postUser.name}
             </p>
           </div>
@@ -78,7 +95,7 @@ const ListPost = ({ item }) => {
         </div>
 
         <div className="flex justify-content justify-between items-center mt-3 pb-3">
-          <div className="flex gap-64 mt-4 justify-between font-poppins font-medium text-xs text-white pr-8">
+          <div className="flex gap-56 mt-4 justify-between font-poppins font-medium text-xs text-white px-5">
             <p
               onClick={() => handlePopComment(item._id)}
               className="cursor-pointer"
@@ -104,7 +121,7 @@ const ListPost = ({ item }) => {
           <div className="Post h-fit flex gap-2">
             <div className="bg-primary w-11 h-11 rounded-lg">
               <img
-                src={`http://localhost:8000/${login.image}`}
+                src={`http://localhost:8000/${userData.image}`}
                 alt=""
                 className="w-11 h-11 rounded-lg"
               />
@@ -132,7 +149,7 @@ const ListPost = ({ item }) => {
       <div
         class={
           comment == true
-            ? "fade fixed top-20 left-[410px] lg:left-[600px] w-[700px] h-[620px]  scrollbar-thin scrollbar-thumb-Secondary scrollbar-track-Tertairy mb-5 overflow-y-auto overflow-x-hidden outline-none"
+            ? "fade fixed top-20 left-[410px] lg:left-[475px] w-1/2 h-[620px]  scrollbar-thin scrollbar-thumb-Secondary scrollbar-track-Tertairy mb-5 overflow-y-auto overflow-x-hidden outline-none"
             : "hidden"
         }
       >
@@ -157,8 +174,8 @@ const ListPost = ({ item }) => {
                 </div>
               ) : (
                 listComment.comments.map((comm) => (
-                  <div class="flex bg-Secondary shadow-lg rounded-lg mx-4 md:mx-auto my-5 max-w-md md:max-w-2xl ">
-                    <div class="flex items-start px-4 py-6">
+                  <div class="flex bg-Secondary shadow-lg rounded-lg mx-4  my-5 max-w-md md:max-w-2xl ">
+                    <div class="flex items-start px-5 py-6">
                       <img
                         class="w-12 h-12 rounded-full object-cover mr-4 shadow"
                         src={`http://localhost:8000/${comm.user.image}`}

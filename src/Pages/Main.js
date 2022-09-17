@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Home from "./Home";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import Confetti from "react-confetti";
 
 const Main = () => {
   const [userData, setUserData] = useState({});
@@ -34,8 +35,9 @@ const Main = () => {
   }
 
   return (
-    <div className=" scrollbar-thin w-full h-screen p-3 bg-Secondary text-slate-500 ">
-      <div className="mt-5 gap-6 w-11/12 flex justify-between  m-auto ">
+    <div className=" scrollbar-thin w-full h-fit p-3 bg-primary text-slate-500 font-poppins">
+      <div className=""></div>
+      <div className="mt-5 gap-6 w-11/12 flex justify-between m-auto ">
         <Card user={userData} />
         <Home user={userData} />
         <Trends />

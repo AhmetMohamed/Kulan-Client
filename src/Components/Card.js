@@ -5,6 +5,7 @@ import profile from "../Images/card-Profile.png";
 import github from "../Assets/GitHub.svg";
 import linkedin from "../Assets/LinkedIn.svg";
 import Website from "../Assets/Website.svg";
+import background from "../Assets/background.png";
 import { Link } from "react-router-dom";
 
 function Card({ user }) {
@@ -15,7 +16,7 @@ function Card({ user }) {
           <div className=" rounded-xl h-fit relative bg-Secondary w-72 m-auto mt-4">
             <div className="h-44">
               <div className="h-20 rounded-t-xl bg-Tertairy"></div>
-              <div className=" absolute top-10 m-auto left-28 flex-col ">
+              <div className=" absolute top-10 m-auto left-20 flex-col ">
                 <div className="h-16 m-auto w-16 rounded-xl bg-primary">
                   <img
                     src={`http://localhost:8000/${user.image}`}
@@ -28,7 +29,7 @@ function Card({ user }) {
                     {user.name}
                   </p>
                   <p className="font-poppins text-xs font-medium text-body">
-                    @malidev
+                    {user.username}
                   </p>
                 </div>
               </div>

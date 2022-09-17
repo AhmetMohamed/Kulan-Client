@@ -9,6 +9,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 const Members = () => {
   const [users, setUsers] = useState([]);
   let [color, setColor] = useState("#15c5a4");
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const res = axios
@@ -16,11 +17,12 @@ const Members = () => {
       .then((res) => {
         setUsers(res.data.data);
         // console.log(users.name);
-        console.log(res.data.data[0].skills);
+        // console.log(res.data.data[0].skills);
       });
+    setLoading(false);
   }, []);
 
-  if (users.length == 0) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center -mt-10 bg-Secondary h-screen">
         <ScaleLoader color={color} size={200} />
@@ -29,47 +31,45 @@ const Members = () => {
   }
 
   return (
-    <div className="  w-full h-fit px-10 py-5 grid grid-cols-4 items-center gap-5 bg-Secondary text-slate-500">
-      {users.map((user) => (
-        <div class="bg-[#091423]  mt-5 rounded-3xl shadow-[0_10px_20px_-10px_rgba(0,0,0,0.75)] text-[#B3B8CD] pt-8 w-[340px] h-[500px]  text-center">
-          <img
-            class="border-[1px] border-[#15c5a4] rounded-full mx-auto p-2 w-[127px] h-[128px]"
-            src={`http://localhost:8000/${user.image}`}
-            alt="user"
-          />
-          <h3 class="mt-2">{user.name}</h3>
-          <h6 class="my-2">{user.location}</h6>
-
-          <div class="flex items-center justify-center my-5">
-            <button class="btn-primary bg-Green">
-              <span class="">
-                <img src={github} />
-              </span>
-            </button>
-
-            <button class="btn-primary bg-Green">
-              <span class="">
-                <img src={linkedin} />
-              </span>
-            </button>
-
-            <button class="btn-primary bg-Green">
-              <span>
-                <img src={Website} />
-              </span>
-            </button>
+    <div className="  w-full h-screen p-3 bg-Secondary text-slate-500">
+      <div className="mt-5 w-11/12 grid xl:grid-cols-6 xl:gap-10 gap-1 m-auto">
+        {users.map((user) => (
+          <div className="CardOne mt-3">
+            <div className=" font-poppins font-medium bg-primary w-64 h-52 rounded-lg">
+              <div className="Top flex gap-3 p-5 items-center">
+                <img
+                  src={`http://localhost:8000/${user.image}`}
+                  alt="Profile"
+                  className="rounded-md h-10 w-10"
+                  height="auto"
+                />
+                <div className=" font-poppins font-medium text-xs">
+                  <p className="text-white">{user.name}</p>
+                  <p>{user.username}</p>
+                </div>
+              </div>
+              <div className="Middle">
+                <p className="font-poppins font-medium text-xs px-5 text-body">
+                  {user.description.substring(0, 50)}
+                </p>
+              </div>
+              <div className="Bottom">
+                <div className="flex gap-2 items-center justify-center p-5">
+                  <div className="bg-Tertairy w-10 h-10 rounded-lg">
+                    <img src={github} className="mx-auto mt-2" alt="" />
+                  </div>
+                  <div className="bg-Tertairy w-10 h-10 rounded-lg">
+                    <img src={linkedin} className="mx-auto mt-2" alt="" />
+                  </div>
+                  <div className="bg-Tertairy w-10 h-10 rounded-lg">
+                    <img src={Website} className="mx-auto mt-2" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="bg-[#091423] px-3 rounded-3xl text-left p-4 my-10">
-            <h6 class="text-Green mb-2 text-bold">SKILLS</h6>
-            <ul class="list-none m-0 p-0 flex flex-wrap">
-              {user.skills.map((skill) => (
-                <li class="list-style">{skill}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Home = ({ user }) => {
       });
   }, []);
   return (
-    <div className=" rounded-xl bg-primary flex-1 h-[620px]  scrollbar-thin scrollbar-thumb-Secondary scrollbar-track-Tertairy overflow-hidden overflow-y-scroll mb-5 ">
+    <div className="font-poppins rounded-xl bg-primary flex-1 h-screen  scrollbar-thin scrollbar-thumb-Secondary scrollbar-track-primary overflow-hidden overflow-y-scroll mb-5 ">
       <div className="">
         <div className="rounded-xl h-fit bg-Secondary flex-1 mx-4 mt-4">
           <Comment user={user} />
