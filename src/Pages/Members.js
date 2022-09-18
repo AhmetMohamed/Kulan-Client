@@ -32,7 +32,7 @@ const Members = () => {
 
   return (
     <div className="  w-full h-screen p-3 bg-Secondary text-slate-500">
-      <div className="mt-5 w-11/12 grid xl:grid-cols-6 xl:gap-10 gap-1 m-auto">
+      <div className="mt-5 w-11/12 grid grid-cols-5 justify-between gap-16 m-auto">
         {users.map((user) => (
           <div className="CardOne mt-3">
             <div className=" font-poppins font-medium bg-primary w-64 h-52 rounded-lg">

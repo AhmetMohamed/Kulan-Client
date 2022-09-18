@@ -22,7 +22,7 @@ const AllBlog = () => {
   }
 
   return (
-    <div class="w-full h-screen bg-primary px-20 py-16">
+    <div class="w-full h-fit bg-primary px-20 py-16">
       <div class="header flex items-center justify-between mb-20">
         <div class="title ">
           <Link to="/account/create-blog">
@@ -56,7 +56,7 @@ const AllBlog = () => {
           <ScaleLoader color={color} size={300} />
         </div>
       ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 xl:gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
           {getBlog.map((blog) => (
             <Link to={`/account/getBlog/${blog._id}`}>
               <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">

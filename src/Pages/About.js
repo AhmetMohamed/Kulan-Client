@@ -1,7 +1,7 @@
 import React from "react";
 import Brand from "../Assets/Brand.svg";
 import Amin from "../Assets/Amin.jpg";
-import Ahmed from "../Assets/Ahmed.svg";
+import Ahmed from "../Assets/Ahmed.jpg";
 
 function About() {
   return (
