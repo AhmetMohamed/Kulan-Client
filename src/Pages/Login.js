@@ -28,10 +28,10 @@ const Login = () => {
   }
   return (
     <div className="w-full h-fit p-3 bg-primary text-slate-500 ">
-      <div class="my-16 mx-auto h-[620px] w-[900px] border-[1px]  border-body rounded-md bg-primary pt-10">
-        <div class="flex justify-between">
+      <div class="my-16 mx-auto lg:h-[620px] lg:w-[900px] border-[1px]  border-body rounded-md bg-primary pt-10">
+        <div class="flex lg:justify-between justify-center mb-10">
           <div class="">
-            <img src={login} alt="images" class="h-[550px] ml-10" />
+            <img src={login} alt="images" class="lg:h-[550px] hidden ml-10" />
           </div>
 
           <div class="mx-auto mt-16 flex flex-col items-center justify-center">
