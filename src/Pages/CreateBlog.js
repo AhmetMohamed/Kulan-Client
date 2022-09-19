@@ -22,11 +22,15 @@ const CreateBlog = () => {
       formData.append("blogBody", blog.blogBody);
       formData.append("blogUser", user.id);
 
-      const res = await axios.post("http://localhost:8000/blog", formData, {
-        headers: {
-          authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://kulan-back-end.onrender.com/blog/",
+        formData,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
       // console.log(res.data);
       navigate("/account/blog");
       toast.success(res.data.message);

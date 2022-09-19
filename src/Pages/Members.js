@@ -13,7 +13,7 @@ const Members = () => {
 
   useEffect(() => {
     const res = axios
-      .get("http://localhost:8000/user/getAllUser")
+      .get("https://kulan-back-end.onrender.com/user/getAllUser")
       .then((res) => {
         setUsers(res.data.data);
         // console.log(users.name);
@@ -38,7 +38,7 @@ const Members = () => {
             <div className=" font-poppins font-medium bg-primary w-64 h-52 rounded-lg">
               <div className="Top flex gap-3 p-5 items-center">
                 <img
-                  src={`http://localhost:8000/${user.image}`}
+                  src={`https://kulan-back-end.onrender.com/${user.image}`}
                   alt="Profile"
                   className="rounded-md h-10 w-10"
                   height="auto"

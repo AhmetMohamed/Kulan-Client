@@ -33,7 +33,7 @@ const SignUp = () => {
       formData.append("image", inputs.image);
 
       const res = await axios.post(
-        "http://localhost:8000/user/signup",
+        "https://kulan-back-end.onrender.com/user/signup",
         formData
       );
       // console.log(res.data.token);

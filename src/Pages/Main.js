@@ -16,7 +16,7 @@ const Main = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:8000/user/getUser", {
+      .get("https://kulan-back-end.onrender.com/user/getUser", {
         headers: {
           authorization: token,
         },

@@ -13,7 +13,7 @@ function GetBlog() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://localhost:8000/blog/${id}`, {
+      .get(`https://kulan-back-end.onrender.com/blog/${id}`, {
         headers: {
           authorization: token,
         },
@@ -37,7 +37,7 @@ function GetBlog() {
         <div>
           <img
             alt="blog photo"
-            src={`http://localhost:8000/${content.blogbackground}`}
+            src={`https://kulan-back-end.onrender.com/${content.blogbackground}`}
             class="max-h-52 w-full object-cover"
           />
           <h1 className="font-poppins font-bold text-white mt-10 text-2xl">
@@ -60,7 +60,7 @@ function GetBlog() {
       <div className=" w-11/12 flex gap-6 mt-6 items-center  m-auto">
         <div className="w-12 h-12 bg-Secondary rounded-lg">
           <img
-            src={`http://localhost:8000/${content.blogUser.image}`}
+            src={`https://kulan-back-end.onrender.com/${content.blogUser.image}`}
             alt=""
             className="w-12 h-12 rounded-lg"
           />

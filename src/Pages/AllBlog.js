@@ -10,7 +10,7 @@ const AllBlog = () => {
   let [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/blog/").then((res) => {
+    axios.get("https://kulan-back-end.onrender.com/blog/").then((res) => {
       // console.log(res.data.data);
       setGetBlog(res.data.data);
     });
@@ -63,7 +63,7 @@ const AllBlog = () => {
                 <a href="#" class="w-full block h-full">
                   <img
                     alt="blog photo"
-                    src={`http://localhost:8000/${blog.blogbackground}`}
+                    src={`https://kulan-back-end.onrender.com/${blog.blogbackground}`}
                     class="max-h-52 w-full object-cover"
                   />
                   <div class="bg-Secondary w-full p-4">
@@ -81,7 +81,7 @@ const AllBlog = () => {
                       <a href="#" class="block relative">
                         <img
                           alt="profil"
-                          src={`http://localhost:8000/${blog.blogUser.image}`}
+                          src={`https://kulan-back-end.onrender.com/${blog.blogUser.image}`}
                           class="mx-auto object-cover rounded-lg h-10 w-10 "
                         />
                       </a>

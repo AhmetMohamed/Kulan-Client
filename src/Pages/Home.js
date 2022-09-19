@@ -8,7 +8,7 @@ const Home = ({ user }) => {
 
   useEffect(() => {
     const res = axios
-      .get("http://localhost:8000/post/getAllPost")
+      .get("https://kulan-back-end.onrender.com/post/getAllPost")
       .then((res) => {
         setList(res.data.data);
         // console.log(res.data.data);

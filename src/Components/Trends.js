@@ -6,7 +6,7 @@ import axios from "axios";
 function Trends() {
   const [getBlog, setGetBlog] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8000/blog/").then((res) => {
+    axios.get("https://kulan-back-end.onrender.com/blog").then((res) => {
       // console.log(res.data.data);
       setGetBlog(res.data.data);
     });

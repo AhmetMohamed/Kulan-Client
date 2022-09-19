@@ -15,7 +15,7 @@ const Comment = ({ user }) => {
       const token = localStorage.getItem("token");
       console.log(token);
       const res = await axios.post(
-        "http://localhost:8000/post/createPost",
+        "https://kulan-back-end.onrender.com/post/createPost",
         post,
         {
           headers: {
@@ -38,7 +38,7 @@ const Comment = ({ user }) => {
       <div className="Post h-fit flex p-5 gap-4">
         <div className="bg-primary w-11 h-11 rounded-lg">
           <img
-            src={`http://localhost:8000/${user.image}`}
+            src={`https://kulan-back-end.onrender.com/${user.image}`}
             alt=""
             className="w-11 h-11 rounded-lg"
           />

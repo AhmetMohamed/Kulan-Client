@@ -14,7 +14,10 @@ const Login = () => {
   async function handleOnSubmit(e) {
     try {
       e.preventDefault();
-      const res = await axios.post("http://localhost:8000/user/login", inputs);
+      const res = await axios.post(
+        "https://kulan-back-end.onrender.com/user/login",
+        inputs
+      );
       localStorage.setItem("token", res.data.token);
       navigate("/account/home");
       setUser(true);
