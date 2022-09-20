@@ -6,6 +6,9 @@ import Comment from "../Components/Comment";
 const Home = ({ user }) => {
   const [list, setList] = useState([]);
 
+  {
+    list.map((item) => console.log(item));
+  }
   useEffect(() => {
     const res = axios
       .get("https://kulan-back-end.onrender.com/post/getAllPost")

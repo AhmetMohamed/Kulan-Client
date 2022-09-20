@@ -5,6 +5,7 @@ import github from "../Assets/GitHub.svg";
 import linkedin from "../Assets/LinkedIn.svg";
 import Website from "../Assets/Website.svg";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import { Link } from "react-router-dom";
 
 const Members = () => {
   const [users, setUsers] = useState([]);
@@ -56,13 +57,19 @@ const Members = () => {
               <div className="Bottom">
                 <div className="flex gap-2 items-center justify-center p-5">
                   <div className="bg-Tertairy w-10 h-10 rounded-lg">
-                    <img src={github} className="mx-auto mt-2" alt="" />
+                    <a href={`https://www.${user.github}`} target="_blank">
+                      <img src={github} className="mx-auto mt-2" alt="" />
+                    </a>
                   </div>
                   <div className="bg-Tertairy w-10 h-10 rounded-lg">
-                    <img src={linkedin} className="mx-auto mt-2" alt="" />
+                    <a href={`https://www.${user.linkedin}`} target="_blank">
+                      <img src={linkedin} className="mx-auto mt-2" alt="" />
+                    </a>
                   </div>
                   <div className="bg-Tertairy w-10 h-10 rounded-lg">
-                    <img src={Website} className="mx-auto mt-2" alt="" />
+                    <a href={`https://www.${user.portfolio}`} target="_blank">
+                      <img src={Website} className="mx-auto mt-2" alt="" />
+                    </a>
                   </div>
                 </div>
               </div>

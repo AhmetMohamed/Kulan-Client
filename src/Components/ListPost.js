@@ -13,12 +13,11 @@ const ListPost = ({ item }) => {
   const [userData, setUserData] = useState({});
   let [color, setColor] = useState("#15c5a4");
 
-  console.log(listComment);
   const user = localStorage.getItem("token");
   const decoded = jwt(user);
   const login = decoded.data;
 
-  console.log(login);
+  // console.log(login);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -76,7 +75,7 @@ const ListPost = ({ item }) => {
         <div className="flex gap-3 items-center">
           <div className="bg-primary w-11 h-11 rounded-lg">
             <img
-              src={`http://localhost:8000/${item.postUser.image}`}
+              // src={`http://localhost:8000/${item.postUser.image}`}
               alt=""
               className="w-11 h-11 rounded-lg"
             />
@@ -84,7 +83,7 @@ const ListPost = ({ item }) => {
 
           <div className="Pro  ">
             <p className="font-poppins text-sm font-medium text-white">
-              {item.postUser.name}
+              {/* {item.postUser.name} */}
             </p>
           </div>
         </div>

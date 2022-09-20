@@ -33,7 +33,7 @@ const SignUp = () => {
       formData.append("image", inputs.image);
 
       const res = await axios.post(
-        "https://kulan-back-end.onrender.com/user/signup",
+        "http://localhost:8000/user/signup",
         formData
       );
       // console.log(res.data.token);
@@ -48,10 +48,10 @@ const SignUp = () => {
 
   return (
     <div className="w-full h-fit p-10 bg-primary text-slate-500 ">
-      <div class="my-10 mx-auto lg:h-[620px] lg:w-[1100px] border-[1px] mb-[146px]  border-body rounded-md bg-primary pt-10">
+      <div class="my-10 mx-auto h-[620px] w-[1100px] border-[1px] mb-[146px]  border-body rounded-md bg-primary pt-10">
         <div class="flex justify-between">
           <div class="">
-            <img src={login} alt="images" class="lg:h-[550px] hidden ml-10" />
+            <img src={login} alt="images" class="h-[550px] ml-10" />
           </div>
 
           <div class="mx-auto">
@@ -66,11 +66,11 @@ const SignUp = () => {
               </p>
             </div>
 
-            <div class="mt-10 mx-auto flex flex-col items-center  justify-center ">
-              <div class="mb-5 grid grid-col-1 lg:grid-cols-2 items-center gap-3">
+            <div class="mt-10 flex flex-col items-center">
+              <div class="mb-5 grid grid-cols-2 gap-3">
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Full Name"
                   onChange={(e) =>
                     setInputs({ ...inputs, name: [e.target.value] })
@@ -78,17 +78,17 @@ const SignUp = () => {
                 />
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Email"
                   onChange={(e) =>
                     setInputs({ ...inputs, email: [e.target.value] })
                   }
                 />
               </div>
-              <div class="mb-5 grid grid-col-1 lg:grid-cols-2 gap-3">
+              <div class="mb-5 grid grid-cols-2 gap-3">
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Username"
                   onChange={(e) =>
                     setInputs({ ...inputs, username: e.target.value })
@@ -96,17 +96,17 @@ const SignUp = () => {
                 />
                 <input
                   type="password"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Password"
                   onChange={(e) =>
                     setInputs({ ...inputs, password: e.target.value })
                   }
                 />
               </div>
-              <div class="mb-5 grid grid-col-1 lg:grid-cols-2 gap-3">
+              <div class="mb-5 grid grid-cols-2 gap-3">
                 <input
                   type="password"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Confirm Password"
                   onChange={(e) =>
                     setInputs({ ...inputs, confirmPassword: e.target.value })
@@ -114,17 +114,17 @@ const SignUp = () => {
                 />
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
-                  placeholder="Skills Use , ex: React, Flutter"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  placeholder="Skills"
                   onChange={(e) =>
                     setInputs({ ...inputs, skills: e.target.value })
                   }
                 />
               </div>
-              <div class="mb-5 grid grid-col-1 lg:grid-cols-2 gap-3">
+              <div class="mb-5 grid grid-cols-2 gap-3">
                 <textarea
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Description"
                   onChange={(e) =>
                     setInputs({ ...inputs, description: e.target.value })
@@ -132,17 +132,17 @@ const SignUp = () => {
                 ></textarea>
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-56 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="location"
                   onChange={(e) =>
                     setInputs({ ...inputs, location: e.target.value })
                   }
                 />
               </div>
-              <div class="mb-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div class="mb-5 grid grid-cols-3 gap-4">
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-36 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Github"
                   onChange={(e) =>
                     setInputs({ ...inputs, github: e.target.value })
@@ -150,7 +150,7 @@ const SignUp = () => {
                 />
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-36 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Linkedin"
                   onChange={(e) =>
                     setInputs({ ...inputs, linkedin: e.target.value })
@@ -158,7 +158,7 @@ const SignUp = () => {
                 />
                 <input
                   type="text"
-                  class="lg:h-10 lg:w-56 h-10 w-72 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
+                  class="h-10 w-36 rounded-md bg-Tertairy p-2 font-poppins text-xs font-medium text-body outline-none"
                   placeholder="Portofolio"
                   onChange={(e) =>
                     setInputs({ ...inputs, portfolio: e.target.value })
